@@ -1,0 +1,33 @@
+﻿doctype html
+html(lang='en')
+	head
+		meta(charset='UTF-8')
+		meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no')
+		title Jarn - handwritten text editor
+		link(rel='stylesheet', href='_styles/index.css')
+		script(src='_scripts/global.js')
+		script(src='_scripts/index.js')
+	body
+		#global_overlay
+		#hint_box
+		include _includes/nav.jade
+		article
+			.intro
+				span.brand
+				span#desc
+			.blocks
+				section.left#box_1
+					span.brand
+					span.title#create_title
+					span.desc#create_desc
+					a.go(href='/create/')
+				section.middle#box_2
+					span.brand
+					span.title#edit_title
+					span.desc#edit_desc
+					a.go(href='/edit/') Go there!
+				section.right#box_3
+					span.brand
+					span.title#write_title
+					span.desc#write_desc
+					a.go(href='/write/') Go there!

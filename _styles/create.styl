@@ -1,0 +1,316 @@
+@import 'global.styl'
+
+/** ALL SCREENS **/
+
+.step_1
+	position relative
+	form
+		absolute top 40% left 30%
+		display block
+		margin 0 auto
+		width 40%
+		overflow hidden
+		border-radius 10em
+		border 0.2em solid l_gray
+		#file
+		#file_jarn
+			opacity 0
+			cursor pointer
+			width 149%
+			height 500%
+			margin-left -50%
+			z-index 2
+			padding 1.5em 0
+		span
+			text-transform uppercase
+			letter-spacing 0.05em
+			font-family bold
+			font-weight bold
+			font-size 1.25em
+			color l_gray
+			text-align center
+			display block
+			padding-top 5%
+			absolute top 0
+			width 100%
+			height 100%
+		&:hover
+			border 0.2em solid white
+			span
+				color white
+.step_2
+	.canvas_pointer
+		z-index 9
+		background transparent
+		display none
+		position absolute
+		.box
+			absolute top 0 left 0
+			width 30px
+			height 30px
+		.arrow
+			width 0
+			height 0
+			border 15px solid transparent
+	.canvas_pointer
+	.box
+	.arrow
+	.line
+		cursor url('../_images/grab.png')
+		cursor -moz-grab
+		cursor -webkit-grab
+		&:active
+			cursor url('../_images/grabbing.png')
+			cursor -moz-grabbing
+			cursor -webkit-grabbing
+	.x_pointer
+		z-index 9
+		height 30px
+		.arrow
+			absolute left 30px
+		.line
+			width 100%
+			height 2px
+			top calc(50% - 1px)
+	.y_pointer
+		z-index 8
+		width 30px
+		.arrow
+			absolute top 30px
+		.line
+			width 2px
+			height 100%
+			left calc(50% - 1px)
+	#pointer_x_1
+	#pointer_y_1
+		.box
+			background orange
+		.line
+			background orange
+	#pointer_x_1 .arrow
+		border-left 15px solid orange
+	#pointer_y_1 .arrow
+		border-top 15px solid orange
+	#pointer_x_2
+	#pointer_y_2
+		.box
+			background blue
+		.line
+			background blue
+	#pointer_x_2 .arrow
+		border-left 15px solid blue
+	#pointer_y_2 .arrow
+		border-top 15px solid blue
+	#pointer_x_2
+	#pointer_y_2
+		display none
+	.panel
+		overflow-y auto
+		padding 1%
+		transition all 0.6s ease
+		color d_gray
+		height 94%
+		position absolute
+		top 3%
+		.panel_header
+			color white
+	.panel_left
+		background rgba(l_gray, 0.2)
+		.option
+			display block
+			margin-top 1em
+			text-align left
+			.option_title
+				display block
+				margin-bottom 0.5em
+				&.choose_color_again:hover
+					cursor pointer
+					color white
+			.option_tool input
+				vertical-align middle
+			.result
+				padding-left 1em
+			&#confirm_points
+				display none
+				input
+					background none
+					&:focus
+						outline none
+						border-color orange
+				#coords_1_x
+				#coords_1_y
+					color orange
+				#coords_2_x
+				#coords_2_y
+					color blue
+				#letter_input_pointers
+					text-shadow none
+					color orange
+					border-color blue
+					text-align center
+					&:focus
+						border-color orange
+					&.invalid
+						color red
+						border-color red
+				.divider
+					display block
+					height 0.5em
+		.panel_hint
+			text-align left
+			absolute bottom 1%
+			td
+				vertical-align top
+	.panel_middle
+		width 60%
+		background rgba(d_gray, 0.2)
+		overflow hidden
+		#selection_box
+			z-index 5
+			position fixed/*Or absolute (sometimes lags)*/
+			display none
+			width 0
+			height 0
+			#letter_input
+			#letter_input:focus
+				background transparent
+				position absolute
+				color black
+				bottom 0
+				display none
+				width 100%
+				height 100%
+				text-align center
+				border none
+				outline none
+		#canvas
+			absolute top 0 left 0
+		#tmp_state_canvas
+			display none
+	.right_panel_wrapper
+			padding 1% 0 0 0
+			background rgba(l_gray, 0.2)
+			overflow auto
+		#lang_choose_title
+			display block
+		#return_button
+			margin 0 auto
+			display none
+		.right_panel
+			margin-top 8%
+			height 68%
+			width 100%
+			overflow auto
+			#lang_table
+				width 100%
+				td
+					text-align center
+					padding 0.25em 0
+				.active_letter
+					cursor pointer
+					color white
+			#lang_choose table
+				width 100%
+				cursor pointer
+				td
+					text-align center
+					cursor pointer
+					width 50%
+					&.disabled_lang
+						opacity 0.4
+					&:hover
+						& *
+							color white
+					.lang_img
+						cursor pointer
+						margin-top -12px //Every flag icon has a padding, it's 12px from the top
+					.lang_name
+						cursor pointer
+						display block
+						margin-top -5%
+						margin-bottom 15%
+			.lang_panel
+				display none
+				width 100%
+		.right_subpanel
+			overflow hidden
+			color d_gray
+			width 100%
+			height 24%
+			background rgba(d_gray, 0.2)
+			absolute bottom 0 left 0
+			//border-top 1px solid d_gray
+			#tmp_canvas_wrapper
+				width 50%
+				height 100%
+				overflow scroll
+				position relative
+				#tmp_canvas
+					absolute top 0 left 0
+			#tmp_canvas_tools
+				absolute top 0 right 0.5em
+				text-align left
+.step_3
+	#congratulations
+		display inline-block
+		width 80%
+		color d_gray
+		line-height 250%
+		font-size 1.25em
+		margin-top 15%
+	.letter_canvas_wrapper
+		display none
+
+/** GRATER THAN MOBILE BREAKPOINT */
+
+@media (min-width mobile_breakpoint)
+	.panel
+		.panel_header
+			text-align center
+	.panel_left
+	.right_panel_wrapper
+		width 18%
+		.switch_panels
+			display none
+	.panel_left
+		left 2% !important
+		.panel_settings
+			display none
+	.right_panel_wrapper
+		right 2%
+	.panel_middle
+		left 20%
+
+/** LOWER THAN MOBILE BREAKPOINT */
+
+@media (max-width mobile_breakpoint)
+	#file+span
+		padding-top 10%
+	.canvas_pointer
+		display block
+	.panel_middle
+		left 40%
+	.panel_left
+	.right_panel_wrapper
+		text-align left
+		width 40%
+		.switch_panels
+			display block
+			absolute top 0 right 0
+			line-height 60%
+			margin 2%
+			cursor pointer
+			font-size 1.5em
+			float right
+			&:hover
+				color white
+	.panel_left
+		z-index 3
+		left 0
+		input[type='range']
+			width 65%
+		.panel_hint
+			display none
+	.right_panel_wrapper
+		opacity 0
+		left 0

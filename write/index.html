@@ -1,0 +1,166 @@
+
+<html lang="en">
+  <head>
+    <title>[WRITE] Jarn - handwritten text editor</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="../_styles/write.css"/>
+    <script defer="" src="../_scripts/global.js"></script>
+    <script defer="" src="../_scripts/write.js"></script>
+    <style id="stylesheet"></style>
+  </head>
+  <body>
+    <div id="global_overlay"></div>
+    <div id="hint_box"></div>
+    <header><span class="header"><a id="nav_brand" href="/" class="brand">Jarn</a><span id="nav_brand_secondary">- online handwritten text editor</span></span><span id="toggle_nav" class="hamburger_icon">&equiv;</span>
+      <ul class="nav">
+        <li><a href="/" id="nav_home" class="navlink">Home</a></li>
+        <li><a href="/create/" id="nav_create" class="navlink">Create</a></li>
+        <li><a href="/edit/" id="nav_edit" class="navlink">Edit</a></li>
+        <li><a href="/write/" id="nav_write" class="navlink">Write</a></li>
+        <li><a href="/faq/" id="nav_faq" class="navlink">FAQ</a></li>
+        <li><a href="/settings/" target="_blank" class="navlink"><img src="/_images/settings.png" alt="" class="settings_img"/><span id="nav_settings">Settings</span></a></li>
+      </ul>
+    </header>
+    <div id="fake_scrollbar"></div>
+  </body>
+  <article>
+    <section class="step_1">
+      <form>
+        <input id="file" type="file" multiple="multiple" title=" "/><span id="file_text">Pick a file</span>
+      </form>
+      <button id="b_to_home" class="backward"></button>
+      <button id="f_to_1" class="forward"></button>
+    </section>
+    <section class="step_2">
+      <div class="step_overlay"></div>
+      <div class="step_inner">
+        <div class="panel panel_left"><span class="switch_panels right_panel_show">&equiv;</span><span id="text_tools_header" class="panel_header"></span>
+          <div class="option"><span id="use_canvas_title" class="option_title"></span>
+            <div class="option_tool">
+              <div class="custom_select_wrapper">
+                <div data-value="0" id="canvas_to_use" class="custom_select wrapped">
+                  <div data-value="0" class="custom_option chosen"><span>A canvas to use</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="option"><span id="letters_margins_title" class="option_title"></span>
+            <label class="option_tool"><span id="letters_to_input_title" class="result">Letter(s): </span>
+              <input id="letters_for_settings" type="text" size="5"/>
+              <div class="fields"><span class="field_line top_field">
+                  <input id="letter_margin_top" type="number" max="255" min="-255" size="3"/></span><span class="field_line left_right_field">
+                  <input id="letter_margin_left" type="number" max="255" min="-255" size="3" class="left"/><img id="letter_icon" src="../_images/letters.png" class="img"/>
+                  <input id="letter_margin_right" type="number" max="255" min="-255" size="3" class="right"/></span><span class="field_line bottom_field">
+                  <input id="letter_margin_bottom" type="number" max="255" min="-255" size="3"/></span></div><span><span id="letters_size_title">Розмір:</span>
+                <input id="letters_size" type="number" size="3" min="0" max="255"/><span> %</span></span>
+            </label>
+          </div>
+          <div class="option"><span id="line_margin_title" class="option_title"></span>
+            <label class="option_tool"><span id="line_margin_tool"></span>
+              <input id="line_margin" type="number" size="5"/><span> </span><span class="px"></span>
+            </label>
+          </div>
+          <div class="option"><span id="find_replace_title" class="option_title"></span>
+            <label class="option_tool find_replace">
+              <table>
+                <tr>
+                  <td class="find"></td>
+                  <td>
+                    <input id="find_field" type="text" size="8"/>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="replace"></td>
+                  <td>
+                    <input id="replace_field" type="text" size="8"/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <button id="find_button" class="find"></button>
+                  </td>
+                  <td>
+                    <button id="replace_button" class="replace"></button>
+                  </td>
+                </tr>
+              </table><span class="button_wrapper">
+                <button id="replace_all_button" class="replace_all"></button></span>
+            </label>
+          </div>
+          <div class="option">
+            <label class="option_tool">
+              <button id="toggle_test" class="show_test_letters"></button>
+            </label><br/>
+            <label class="option_tool">
+              <button id="reverse_title"></button>
+            </label>
+          </div>
+        </div>
+        <div class="panel panel_middle">
+          <div id="text_input_wrapper">
+            <textarea id="text_input" autofocus="autofocus"></textarea>
+            <p id="text_output"></p>
+          </div>
+          <div id="preview_wrapper">
+            <div id="canvases_wrapper">
+              <canvas id="tmp_canvas" width="1289" height="1565"></canvas>
+              <canvas id="preview" width="1289" height="1565"></canvas>
+            </div><span id="canvas_prev"><</span><span id="canvas_next">></span>
+          </div>
+        </div>
+        <div class="panel panel_right right_panel_wrapper"><span id="image_tools_header" class="panel_header"></span><span class="switch_panels left_panel_show">&#9997;</span>
+          <div class="option"><span id="sheet_margins_title" class="option_title"></span>
+            <label class="option_tool">
+              <div class="fields"><span class="field_line top_field">
+                  <input id="sheet_margin_top" type="number" max="255" min="-255" size="3"/></span><span class="field_line left_right_field">
+                  <input id="sheet_margin_left" type="number" max="255" min="-255" size="3" class="left"/><img id="sheet_icon" src="../_images/sheet.png" class="img"/>
+                  <input id="sheet_margin_right" type="number" max="255" min="-255" size="3" class="right"/></span><span class="field_line bottom_field">
+                  <input id="sheet_margin_bottom" type="number" max="255" min="-255" size="3"/></span></div>
+            </label>
+          </div>
+          <div class="option"><span id="sheet_type_title" class="option_title"></span><span class="option_tool">
+              <label>
+                <input type="radio" name="sheet_type" checked="checked" id="sheet_type_cells"/><span class="radio_body"><span class="radio_inner"></span></span><span id="page_type_cells_title" class="result"></span><br/>
+              </label>
+              <label>
+                <input type="radio" name="sheet_type" checked="checked" id="sheet_type_lines"/><span class="radio_body"><span class="radio_inner"></span></span><span id="page_type_lines_title" class="result"></span>
+              </label></span></div>
+          <div class="option"><span id="show_margins_title" class="option_title"></span>
+            <label class="option_tool">
+              <input id="show_margins" type="checkbox" checked="checked"/><span class="checkbox_body"><span class="checkbox_inner"></span></span><span id="show_margins_switch" class="result"></span>
+            </label>
+          </div>
+          <div class="option"><span id="auto_CR_title" class="option_title"></span>
+            <label class="option_tool">
+              <input id="auto_CR" type="checkbox" checked="checked"/><span class="checkbox_body"><span class="checkbox_inner"></span></span><span id="auto_CR_switch" class="result"></span>
+            </label>
+          </div>
+          <div class="option"><span id="sheet_size_title" class="option_title"></span>
+            <label class="option_tool">
+              <input id="sheet_size" type="range" min="0" value="1" max="5" step="0.01"/><span id="sheet_size_output" class="result">100</span><span>%</span>
+            </label>
+          </div>
+          <div class="option"><span id="text_size_title" class="option_title"></span>
+            <label class="option_tool">
+              <input id="text_size" type="range" min="0" value="1" max="5" step="0.01"/><span id="text_size_output" class="result">100</span><span>%</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <button id="b_to_0" class="backward"></button>
+      <button id="f_to_2" class="forward"></button>
+    </section>
+    <section class="step_3">
+      <div class="step_overlay"></div>
+      <div class="step_inner">
+        <div id="letter_canvas_parent"></div>
+        <div id="tmp_preview_canvas_parent">
+          <canvas id="tmp_preview_canvas"></canvas>
+        </div>
+      </div>
+      <button id="b_to_1" class="backward"></button>
+      <button id="f_to_3" class="forward"></button>
+    </section>
+  </article>
+</html>

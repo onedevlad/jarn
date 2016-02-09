@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Jarn - handwritten text editor</title>
+    <link rel="stylesheet" href="_styles/index.css">
+    <script src="_scripts/global.js"></script>
+    <script src="_scripts/index.js"></script>
+  </head>
+  <body>
+    <div id="global_overlay"></div>
+    <div id="hint_box"></div>
+    <header><span class="header"><a id="nav_brand" href="/" class="brand">Jarn</a><span id="nav_brand_secondary">- online handwritten text editor</span></span><span id="toggle_nav" class="hamburger_icon">&equiv;</span>
+      <ul class="nav">
+        <li><a href="/" id="nav_home" class="navlink">Home</a></li>
+        <li><a href="/create/" id="nav_create" class="navlink">Create</a></li>
+        <li><a href="/edit/" id="nav_edit" class="navlink">Edit</a></li>
+        <li><a href="/write/" id="nav_write" class="navlink">Write</a></li>
+        <li><a href="/faq/" id="nav_faq" class="navlink">FAQ</a></li>
+        <li><a href="/settings/" target="_blank" class="navlink"><img src="/_images/settings.png" alt="" class="settings_img"><span id="nav_settings">Settings</span></a></li>
+      </ul>
+    </header>
+    <article>
+      <div class="intro"><span class="brand"></span><span id="desc"></span></div>
+      <div class="blocks">
+        <section id="box_1" class="left"><span class="brand"></span><span id="create_title" class="title"></span><span id="create_desc" class="desc"></span><a href="/create/" class="go"></a></section>
+        <section id="box_2" class="middle"><span class="brand"></span><span id="edit_title" class="title"></span><span id="edit_desc" class="desc"></span><a href="/edit/" class="go">Go there!</a></section>
+        <section id="box_3" class="right"><span class="brand"></span><span id="write_title" class="title"></span><span id="write_desc" class="desc"></span><a href="/write/" class="go">Go there!</a></section>
+      </div>
+    </article>
+  </body>
+</html>
