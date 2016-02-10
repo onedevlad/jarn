@@ -542,19 +542,24 @@ window.onload=function(){
 	}
 	evt.set(id('toggle_nav'), 'click', 'globals.toggle_nav()');
 
-	if(current_page === 'index') id('nav_home').parentNode.classList.add('active');
+	if(current_page === 'index'){
+		id('nav_home').parentNode.classList.add('active');
+	}
 	else{
-		globals.path_to_root='../';
 		id('nav_'+current_page).parentNode.classList.add('active');
-		var navLinks=cls('navlink', true);
-		for(var i=0; i<navLinks.length; i++){
-			navLinks[i].setAttribute('href', globals.path_to_root+navLinks[i].setAttribute('href'));
-		}
+		globals.path_to_root='../';
 	}
 	if(current_page !== 'faq' && current_page !== 'settings' && current_page !== 'index'){
 		evt.set(cls('left_panel_show'), 'click', 'globals.panel.left()');
 		evt.set(cls('right_panel_show'), 'click', 'globals.panel.right()');
 	}
+
+	var navLinks=cls('navlink', true);
+	for(var i=0; i<navLinks.length; i++){
+		navLinks[i].setAttribute('href', globals.path_to_root+navLinks[i].getAttribute('href'));
+	}
+
+	id('nav_brand').setAttribute('href', globals.path_to_root);
 
 	if(cls('custom_select', true).length){
 		for(var i=0; i<cls('custom_select', true).length; i++){
