@@ -17,7 +17,7 @@ var globals={
 	'panel': {},
 	'localization': {},
 	'unloader': {},
-	'path_to_root': '.'
+	'path_to_root': './'
 };
 
 var evt={
@@ -548,7 +548,7 @@ window.onload=function(){
 		id('nav_'+current_page).parentNode.classList.add('active');
 		var navLinks=cls('navlink', true);
 		for(var i=0; i<navLinks.length; i++){
-			navLinks[i].setAttribute('href', path_to_root+navLinks[i].setAttribute('href'));
+			navLinks[i].setAttribute('href', globals.path_to_root+navLinks[i].setAttribute('href'));
 		}
 	}
 	if(current_page !== 'faq' && current_page !== 'settings' && current_page !== 'index'){
