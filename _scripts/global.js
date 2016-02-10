@@ -17,6 +17,7 @@ var globals={
 	'panel': {},
 	'localization': {},
 	'unloader': {},
+	'path_to_root': './'
 };
 
 var evt={
@@ -437,16 +438,14 @@ globals.file_to_text=function(src, success, fail){
 
 globals.localization.localize=function(){
 	var interface_language=globals.cookies.parse().interface_language;
-	var directory='';
-	if(current_page !== 'index') directory='../'
-	for(var i=0; i<cls('settings_img', true).length; i++) cls('settings_img', true)[i].src=directory+'_images/flags/'+interface_language+'.png';
+	for(var i=0; i<cls('settings_img', true).length; i++) cls('settings_img', true)[i].src=globals.path_to_root+'_images/flags/'+interface_language+'.png';
 	var new_script=document.createElement('script');
 	new_script.type='text/javascript';
 	var address=current_page;
 	if(current_page === 'edit'){
 		address='create';
 	}
-	new_script.src=directory+'_scripts/localization/'+address+'/'+interface_language+'.js';
+	new_script.src=globals.path_to_root+'_scripts/localization/'+address+'/'+interface_language+'.js';
 	document.head.appendChild(new_script);
 	new_script.onload=function(){
 		var put_changes=function(){
@@ -514,22 +513,6 @@ globals.localization.extend=function(){
 		text: 'It seems you\'re a new visitor. Welcome to Jarn - a free online text editor for handwritten text. Please select your language from the list below to continue.',
 	};
 
-	// var tmp='<br><div class="fti_langs">';
-	// for(var i in localization.languages){
-	// 	tmp+='<div class="fti_lang" onclick="globals.cookies.set(\'interface_language\', \''+i+'\', 365); localize();globals.msg_exit(function(){}, event)">'+
-	// 	  '<img class="fri_lang_img" src="../_img/flags/'+i+'.png" alt="'+localization.languages[i]+'"><br>'+
-	// 	  '<span class="fti_lang_name">'+localization.languages[i]+'</span>'+
-	// 	'</div>';
-	// }
-	// tmp+='</div>';
-	// if(globals.cookies.parse().fti === 'true'){
-	// 	globals.msg('alert', localization.msgs.fti.title, localization.msgs.fti.text+tmp, function(){
-	// 		globals.cookies.set('fti', 'false', globals.date_count(365));
-	// 	}, function(){
-	// 		globals.cookies.set('fti', 'false', globals.date_count(365));
-	// 	});
-	// }
-
 	if(globals.cookies.parse().show_hints === "true"){
 		globals.hint.set();
 	}
@@ -551,25 +534,28 @@ globals.localization.extend=function(){
 /*************************************************************************************************/
 
 window.onload=function(){
-	globals.localization.localize();
-	//globals.ban.test();
+	window.scrollTo(0, 0);
+	globals.touchscreen=!!('ontouchstart' in window);
 
 	for(var i=0; i<cls('tool', true).length; i++){
 		evt.set(cls('tool', true)[i], 'click', 'globals.settings.show()');
 	}
 	evt.set(id('toggle_nav'), 'click', 'globals.toggle_nav()');
-	globals.touchscreen=!!('ontouchstart' in window);
 
 	if(current_page === 'index') id('nav_home').parentNode.classList.add('active');
 	else{
+		globals.path_to_root='../';
 		id('nav_'+current_page).parentNode.classList.add('active');
+		var navLinks=cls('navlink', true);
+		for(var i=0; i<navLinks.length; i++){
+			navLinks[i].setAttribute('href', path_to_root+navLinks[i].setAttribute('href'));
+		}
 	}
 	if(current_page !== 'faq' && current_page !== 'settings' && current_page !== 'index'){
 		evt.set(cls('left_panel_show'), 'click', 'globals.panel.left()');
 		evt.set(cls('right_panel_show'), 'click', 'globals.panel.right()');
 	}
 
-	window.scrollTo(0, 0);
 	if(cls('custom_select', true).length){
 		for(var i=0; i<cls('custom_select', true).length; i++){
 			evt.set(cls('custom_select', true)[i], 'click', 'this.classList.toggle("wrapped")');
@@ -581,8 +567,6 @@ window.onload=function(){
 
 		globals.custom_select.default_height=getComputedStyle(cls('custom_select'), 'height');
 	}
-	//window.onerror=function(message, src, ln){
-	//	globals.msg('alert', message.split(':')[0], message.split(':')[1]+'. <br/><sub>'+src.split('/').pop()+':'+ln+'</sub>');
-	//	return;
-	//};
+
+	globals.localization.localize();
 };
