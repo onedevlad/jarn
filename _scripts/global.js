@@ -17,7 +17,7 @@ var globals={
 	'panel': {},
 	'localization': {},
 	'unloader': {},
-	'path_to_root': './'
+	'path_to_root': '.'
 };
 
 var evt={
