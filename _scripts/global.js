@@ -433,55 +433,6 @@ globals.file_to_text=function(src, success, fail){
 	}
 }
 
-globals.ban.set=function(){
-	if(globals.cookies.parse()['banned'] !== 'true'){
-		document.cookie='banned=true; path=/; expires='+globals.date_count(7);
-		if(globals.can_i_use(window.localStorage)){
-			window.localStorage.setItem('ban_expires', globals.date_count(7));
-		}
-	}
-	var ban_me=document.createElement("A");
-	ban_me.href=absolute_path+'/banned';
-	document.body.appendChild(ban_me);
-	ban_me.click();
-};
-
-globals.ban.unset=function(){
-	document.cookie='banned=false; path=/; expires='+globals.date_count(7);
-	if(globals.can_i_use(window.localStorage)){
-		window.localStorage.setItem('banned', 'false');
-		window.localStorage.setItem('ban_expires', globals.date_count(7));
-	}
-};
-
-globals.ban.test=function(){
-	if(current_page === 'index'){
-		if(VK){
-			VK.Auth.getLoginStatus(function(response){
-				if(response.status === 'not_authorized'){
-					globals.ban.set();
-				}
-			});
-		}
-	}
-	if(globals.cookies.parse()['banned'] === 'true'){
-		globals.ban.set();
-	}
-	if(globals.can_i_use(window.localStorage)){
-		if(window.localStorage.getItem('banned') === 'true'){
-			globals.ban.set();
-		}
-	}
-	if(globals.cookies.parse()['banned'] !== 'true'){
-		globals.ban.unset();
-	}
-	if(globals.can_i_use(window.localStorage)){
-		if(new Date(window.localStorage.getItem('ban_expires')).getTime() >= (new Date()).getTime()){
-			globals.ban.unset();
-		}
-	}
-};
-
 /************************************************************************************************/
 
 globals.localization.localize=function(){
