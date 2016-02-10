@@ -437,14 +437,16 @@ globals.file_to_text=function(src, success, fail){
 
 globals.localization.localize=function(){
 	var interface_language=globals.cookies.parse().interface_language;
-	for(var i=0; i<cls('settings_img', true).length; i++) cls('settings_img', true)[i].src='/_images/flags/'+interface_language+'.png';
+	var directory='';
+	if(current_page !== 'index') directory='../'
+	for(var i=0; i<cls('settings_img', true).length; i++) cls('settings_img', true)[i].src=directory+'_images/flags/'+interface_language+'.png';
 	var new_script=document.createElement('script');
 	new_script.type='text/javascript';
 	var address=current_page;
 	if(current_page === 'edit'){
 		address='create';
 	}
-	new_script.src='/_scripts/localization/'+address+'/'+interface_language+'.js';
+	new_script.src=directory+'_scripts/localization/'+address+'/'+interface_language+'.js';
 	document.head.appendChild(new_script);
 	new_script.onload=function(){
 		var put_changes=function(){
@@ -468,7 +470,7 @@ globals.localization.localize=function(){
 		if(current_page === 'edit'){
 			var new_script_1=document.createElement('script');
 			new_script_1.type='text/javascript';
-			new_script_1.src='/_scripts/localization/edit/'+interface_language+'.js';
+			new_script_1.src=directory+'_scripts/localization/edit/'+interface_language+'.js';
 			document.head.appendChild(new_script_1);
 			new_script_1.onload=put_changes;
 		}
