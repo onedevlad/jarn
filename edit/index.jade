@@ -1,0 +1,140 @@
+﻿doctype html
+html(lang='en')
+	head
+		title [EDIT] Jarn - handwritten text editor
+		meta(charset='UTF-8')
+		meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no')
+		link(rel='stylesheet', href='../_styles/create.css')
+		link(rel='stylesheet', href='../_styles/edit.css')
+		script(defer='', src='../_scripts/global.js')
+		script(defer='', src='../_scripts/create.js')
+		script(defer='', src='../_scripts/edit.js')
+	body
+		#global_overlay
+		#hint_box
+		include ../_includes/nav.jade
+		article
+			section.step_1
+				form
+					input#file.file(type='file', title=' ')
+					span#file_text Pick a file
+				form#jarn_form
+					input#file_jarn.file(type='file', title=' ', onchange='kernel.jarn_file_upload(files[0])')
+					span#jarn_file_text
+				button#b_to_home.backward Home
+				button#f_to_1.forward Next step
+			section.step_2
+				.canvas_pointer.x_pointer#pointer_x_1
+					.box
+					.arrow
+					.line
+				.canvas_pointer.x_pointer#pointer_x_2
+					.box
+					.arrow
+					.line
+				.canvas_pointer.y_pointer#pointer_y_1
+					.box
+					.arrow
+					.line
+				.canvas_pointer.y_pointer#pointer_y_2
+					.box
+					.arrow
+					.line
+				.step_inner
+					.panel.panel_left
+						span.panel_header Controle panel
+						.option
+							span.option_title#option_1_header
+							label.option_tool
+								input#multiplier(type='range', max='100', min='0', value='20')
+								span#range_result.result 20%
+						.option
+							span.option_title#option_2_header
+							label.option_tool
+								input#canvas_size(type='range', min='0', value='1', max='5', step='0.1')
+								span#canvas_size_result.result 100%
+						.option
+							span.option_title#option_3_header
+							label.option_tool
+								input#selection_box_size(type='range', min='50', value='100', max='300', step='10')
+								span.selection_box_size_output.result 100
+								span px
+						.option
+							span.option_title#option_4_header
+							label.option_tool
+								span.color_wrapper
+									input#selection_box_color(type='color')
+								span#selection_box_color_output.result #000000
+						.option
+							span.option_title#option_5_header
+							span.option_tool
+								label
+									input#set_classic_input_method(type='radio', name='input_method', checked)
+									span.radio_body
+										span.radio_inner
+									span.result#classic_input_method_title
+								br
+								label
+									input#set_pointers_input_method(type='radio', name='input_method')
+									span.radio_body
+										span.radio_inner
+									span.result#pointers_input_method_title
+						.option#confirm_points
+							span.option_title#enter_points
+							span.option_tool
+								span#coords_1 
+									input(type='text', value='15', size='3', min='0')#coords_1_x
+									span  : 
+									input(type='text', value='15', size='3', min='0')#coords_1_y
+									span#max_selection_box_size.result max: 
+										span.selection_box_size_output 100
+								br
+								div.divider
+								span#coords_2
+									input(type='text', value='15', size='3', min='0')#coords_2_x
+									span  : 
+									input(type='text', value='15', size='3', min='0')#coords_2_y
+									span.result
+										span#pointers_result_width 0
+										span  x 
+										span#pointers_result_height 0
+								div.divider
+								input#letter_input_pointers(type='text' size='1', placeholder='Aa' maxlength='1')
+								button#points_confirm Confirm!
+						.panel_hint
+							table
+								tr
+									td *&nbsp;
+									td#panel_hint_text
+						span.switch_panels.right_panel_show &#9638;
+					#canvas_parent.panel.panel_middle
+						#selection_box
+							input#letter_input(type='text', maxlength='1', autofocus='')
+						canvas#canvas
+					.panel.right_panel_wrapper
+						p.panel_header#lang_choose_title
+						button.panel_header#return_button
+						.right_panel
+							#lang_choose
+							#lang_panel
+								table#lang_table
+						.right_subpanel
+							div#tmp_canvas_wrapper
+								canvas#tmp_canvas
+							div#tmp_canvas_tools
+								span#tmp_canvas_move.tmp_canvas_tool
+								br
+								span#tmp_canvas_pencil.tmp_canvas_tool
+								br
+								span#tmp_canvas_eraser.tmp_canvas_tool
+						span.switch_panels.left_panel_show Aa
+				button#b_to_0.backward
+				button#f_to_2.forward
+				.step_overlay
+			section.step_3
+				#congratulations
+				.letter_canvas_wrapper
+					canvas#letter_canvas
+				button#b_to_1.backward
+				button#f_to_3.forward
+				.step_overlay

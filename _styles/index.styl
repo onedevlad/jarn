@@ -1,0 +1,75 @@
+@import 'vars.styl'
+@import 'global.styl'
+
+/** ALL SCREENS **/
+.intro
+	width 100%
+	height 100%
+	padding-top 40vh
+	.brand
+		display block
+		font-size 6em
+		color white
+	#desc
+		margin-top 2%
+		display block
+		color d_white
+.blocks
+	section
+		display block
+		border 0.5em solid l_blue
+		background blue
+		text-align center
+		padding 2%
+		color l_gray
+		margin 0 10%
+		.brand
+		.title
+			text-align center
+			font-family bold
+			font-weight bold
+			text-transform uppercase
+			display block
+		.title
+			margin 10% 0
+			font-size 200%
+			color white
+		.go
+			margin-top 10%
+			display block
+			left 10%
+			width 80%
+			border-radius 10em
+			border 0.2em solid d_white
+			padding 3%
+			color d_white
+			&:hover
+				color white
+				border 0.2em solid white
+
+/** GRATER THAN MOBILE BREAKPOINT **/
+@media (min-width mobile_breakpoint)
+	article
+		height 100%
+		.blocks
+			section
+				height 300px
+				width 24%
+				margin 15% 0
+				&.left
+					absolute top 0 left 12%
+				&.middle
+					absolute top 0 left 38%
+				&.right
+					absolute top 0 left 64%
+
+
+/** LOWER THAN MOBILE BREAKPOINT **/
+
+@media (max-width mobile_breakpoint)
+	article
+		.blocks
+			section
+				width 70%
+				margin 15% auto
+				padding-bottom 5%

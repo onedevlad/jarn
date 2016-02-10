@@ -1,0 +1,27 @@
+﻿doctype html
+html(lang='en')
+	head
+		title [CREATE] Jarn - handwritten text editor
+		meta(charset='UTF-8')
+		meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no')
+		link(rel='stylesheet', href='../_styles/settings.css')
+		script(defer='', src='../_scripts/global.js')
+		script(defer='', src='../_scripts/settings.js')
+	body
+		#global_overlay
+		#hint_box
+		include ../_includes/nav.jade
+	article
+		section.step_1
+			.step_inner
+				.setting.special_setting
+					h1.setting_title#lang_title
+					#languages_block
+				.setting
+					h1.setting_title#hints_title
+					span#hints_text
+					label#switch_hints
+						input#hints_checkbox(type='checkbox')
+						span.checkbox_body
+							span.checkbox_inner
+						span.switch_hints_status#off

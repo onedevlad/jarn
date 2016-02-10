@@ -1,0 +1,9 @@
+localization.body.nav_home='Главная';
+localization.body.nav_create='Создать';
+localization.body.nav_edit='Редактировать';
+localization.body.nav_write='Писать';
+localization.body.nav_faq='FAQ';
+localization.body.nav_settings='Settings';
+localization.body.msgs.ok_button='Ладно';
+localization.body.msgs.cancel_button='Отмена';
+localization.body.hints.hint_hide='P.S. Подсказки можно спрятать в глобальных настройках в верху сайта.';

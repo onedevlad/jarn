@@ -1,0 +1,42 @@
+@import 'global.styl'
+.setting
+	width 100%
+	padding 0 7% 0 7%
+	text-align left
+	color d_gray
+	&.special_setting
+		padding 0 2% !important
+	.setting_title
+		text-align center
+		font-size 1.5em
+		padding 1em 0 2em 0
+#languages_block
+	width 100%
+	.lang
+		display inline-block
+		width 10%
+		margin 0 5% 5% 5%
+		text-align center
+		img
+			width 50%
+		&,*
+			cursor pointer
+		&.active_lang
+			background rgba(blue, 0.5)
+			border 2px solid blue
+		&.disabled_lang
+			opacity 0.4
+			&,*
+				cursor default
+#switch_hints
+	padding-left 1%
+	*
+		cursor pointer
+	.switch_hints_status
+		padding-left 1%
+
+/** LOWER THAN MOBILE BREAKPOINT **/
+
+@media(max-width mobile_breakpoint)
+	#languages_block .lang
+		width 20%

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>[CREATE] Jarn - handwritten text editor</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="../_styles/settings.css">
+    <script defer="" src="../_scripts/global.js"></script>
+    <script defer="" src="../_scripts/settings.js"></script>
+  </head>
+  <body>
+    <div id="global_overlay"></div>
+    <div id="hint_box"></div>
+    <header><span class="header"><a id="nav_brand" href="/" class="brand">Jarn</a><span id="nav_brand_secondary">- online handwritten text editor</span></span><span id="toggle_nav" class="hamburger_icon">&equiv;</span>
+      <ul class="nav">
+        <li><a href="/" id="nav_home" class="navlink">Home</a></li>
+        <li><a href="/create/" id="nav_create" class="navlink">Create</a></li>
+        <li><a href="/edit/" id="nav_edit" class="navlink">Edit</a></li>
+        <li><a href="/write/" id="nav_write" class="navlink">Write</a></li>
+        <li><a href="/faq/" id="nav_faq" class="navlink">FAQ</a></li>
+        <li><a href="/settings/" target="_blank" class="navlink"><img src="/_images/settings.png" alt="" class="settings_img"><span id="nav_settings">Settings</span></a></li>
+      </ul>
+    </header>
+  </body>
+  <article>
+    <section class="step_1">
+      <div class="step_inner">
+        <div class="setting special_setting">
+          <h1 id="lang_title" class="setting_title"></h1>
+          <div id="languages_block"></div>
+        </div>
+        <div class="setting">
+          <h1 id="hints_title" class="setting_title"></h1><span id="hints_text"></span>
+          <label id="switch_hints">
+            <input id="hints_checkbox" type="checkbox"><span class="checkbox_body"><span class="checkbox_inner"></span></span><span id="off" class="switch_hints_status"></span>
+          </label>
+        </div>
+      </div>
+    </section>
+  </article>
+</html>

@@ -1,0 +1,9 @@
+localization.body.nav_home='Home';
+localization.body.nav_create='Create';
+localization.body.nav_edit='Edit';
+localization.body.nav_write='Write';
+localization.body.nav_faq='FAQ';
+localization.body.nav_settings='Settings';
+localization.body.msgs.ok_button='Ok';
+localization.body.msgs.cancel_button='Cancel';
+localization.body.hints.hint_hide='P.S. You can disable hints in global settings menu on the top of the site.';

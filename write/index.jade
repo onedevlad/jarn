@@ -1,0 +1,159 @@
+html(lang='en')
+	head
+		title [WRITE] Jarn - handwritten text editor
+		meta(charset='UTF-8')
+		meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no')
+		link(rel='stylesheet', href='../_styles/write.css')
+		script(defer='', src='../_scripts/global.js')
+		script(defer='', src='../_scripts/write.js')
+		style#stylesheet
+	body
+		#global_overlay
+		#hint_box
+		include ../_includes/nav.jade
+		#fake_scrollbar
+	article
+		section.step_1
+			form
+				input#file(type='file', multiple='multiple' title=' ')
+				span#file_text Pick a file
+			button#b_to_home.backward
+			button#f_to_1.forward
+		section.step_2
+			.step_overlay
+			.step_inner
+				.panel.panel_left
+					span.switch_panels.right_panel_show &equiv;
+					span.panel_header#text_tools_header
+					.option
+						span.option_title#use_canvas_title
+						.option_tool
+							.custom_select_wrapper
+								.custom_select.wrapped(data-value='0')#canvas_to_use
+									.custom_option.chosen(data-value='0')
+										span A canvas to use
+					.option
+						span.option_title#letters_margins_title
+						label.option_tool
+							span.result#letters_to_input_title Letter(s): 
+							input#letters_for_settings(type='text', size='5')
+							.fields
+								span.field_line.top_field
+									input#letter_margin_top(type='number' max='255', min='-255', size='3')
+								span.field_line.left_right_field
+									input.left#letter_margin_left(type='number' max='255', min='-255', size='3')
+									img.img#letter_icon(src='../_images/letters.png')
+									input.right#letter_margin_right(type='number' max='255', min='-255', size='3')
+								span.field_line.bottom_field
+									input#letter_margin_bottom(type='number' max='255', min='-255', size='3')
+							span
+								span#letters_size_title Розмір:
+								input#letters_size(type='number', size='3', min='0', max='255')
+								span  %
+					.option
+						span.option_title#line_margin_title
+						label.option_tool
+							span#line_margin_tool
+							input#line_margin(type='number', size='5')
+							span  
+							span.px
+					.option
+						span.option_title#find_replace_title
+						label.option_tool.find_replace
+							table
+								tr
+									td.find
+									td
+										input#find_field(type='text', size='8')
+								tr
+									td.replace
+									td
+										input#replace_field(type='text', size='8')
+								tr
+									td
+										button.find#find_button
+									td
+										button.replace#replace_button
+							span.button_wrapper
+								button.replace_all#replace_all_button
+					.option
+						label.option_tool
+							button#toggle_test.show_test_letters
+						br
+						label.option_tool
+							button#reverse_title
+				.panel.panel_middle
+					#text_input_wrapper
+						textarea#text_input(autofocus='autofocus')
+						p#text_output
+					#preview_wrapper
+						#canvases_wrapper
+							canvas#tmp_canvas(width='1289', height='1565')
+							canvas#preview(width='1289', height='1565')
+						span#canvas_prev <
+						span#canvas_next >
+				.panel.panel_right.right_panel_wrapper
+					span.panel_header#image_tools_header
+					span.switch_panels.left_panel_show &#9997;
+					.option
+						span.option_title#sheet_margins_title
+						label.option_tool
+							.fields
+								span.field_line.top_field
+									input#sheet_margin_top(type='number' max='255', min='-255', size='3')
+								span.field_line.left_right_field
+									input.left#sheet_margin_left(type='number' max='255', min='-255', size='3')
+									img.img#sheet_icon(src='../_images/sheet.png')
+									input.right#sheet_margin_right(type='number' max='255', min='-255', size='3')
+								span.field_line.bottom_field
+									input#sheet_margin_bottom(type='number' max='255', min='-255', size='3')
+					.option
+						span.option_title#sheet_type_title
+						span.option_tool
+							label
+								input(type='radio' name='sheet_type' checked id='sheet_type_cells')
+								span.radio_body
+									span.radio_inner
+								span.result#page_type_cells_title
+								br
+							label
+								input(type='radio' name='sheet_type' checked id='sheet_type_lines')
+								span.radio_body
+									span.radio_inner
+								span.result#page_type_lines_title
+					.option
+						span.option_title#show_margins_title
+						label.option_tool
+							input#show_margins(type='checkbox', checked='checked')
+							span.checkbox_body
+								span.checkbox_inner
+							span.result#show_margins_switch
+					.option
+						span.option_title#auto_CR_title
+						label.option_tool
+							input#auto_CR(type='checkbox', checked='checked')
+							span.checkbox_body
+								span.checkbox_inner
+							span.result#auto_CR_switch
+					.option
+						span.option_title#sheet_size_title
+						label.option_tool
+							input#sheet_size(type='range', min='0', value='1' max='5', step='0.01')
+							span.result#sheet_size_output 100
+							span %
+					.option
+						span.option_title#text_size_title
+						label.option_tool
+							input#text_size(type='range', min='0', value='1', max='5', step='0.01')
+							span.result#text_size_output 100
+							span %
+			button#b_to_0.backward
+			button#f_to_2.forward
+		section.step_3
+			.step_overlay
+			.step_inner
+				#letter_canvas_parent
+				#tmp_preview_canvas_parent
+					canvas#tmp_preview_canvas
+			button#b_to_1.backward
+			button#f_to_3.forward
